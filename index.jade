@@ -5,6 +5,9 @@ html
     link(rel="stylesheet" href="colpick.css")
     link(rel="stylesheet" href="index.css")
     script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js")
+    script(src="http://canvg.googlecode.com/svn/trunk/StackBlur.js")
+    script(src="http://canvg.googlecode.com/svn/trunk/canvg.js")
     script(src="./bower_components/tinycolor/tinycolor.js")
     script(src="./jquery.color-2.1.2.min.js")
     script(src="./colpick.js")
@@ -32,3 +35,8 @@ html
         .block
           img(src="anchor.png")
           input#upload(type="file")
+      #download.option-column.right
+        .block
+          .text Download
+
+  canvas#buffer(width="520px" height="600px")

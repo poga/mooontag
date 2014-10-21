@@ -93,3 +93,8 @@ $ ->
     file = $(\#upload).0.files.0
     console.log file
     handle-file file
+
+  $ \#download .on \click ->
+    svg = "<svg>#{$(\#canvas).html!}</svg>"
+    canvg document.getElementById(\buffer), svg, useCORS: true, log: true, renderCallback: !->
+      window.open document.getElementById(\buffer).toDataURL!, "title", "width=520px, height=600px"
