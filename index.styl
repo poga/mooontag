@@ -1,0 +1,102 @@
+.no-select
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+body
+  text-align: center
+  margin: 0
+  background-color: black
+
+  #header
+    height: 80px
+    width: 100%
+    a
+      color: white
+
+  #background
+    margin-top: 230px
+    height: 300px
+    width: 100%
+    position: absolute
+    background-color: black
+    z-index: -1
+
+  #canvas
+    height: 600px
+    width: 520px
+    display: inline-block
+    vertical-align: top
+
+    #p1
+      stroke-width:"0.5"
+      stroke-linejoin: round
+
+    #p2
+      stroke-width:"0.5"
+      stroke-linejoin: round
+
+  .disabled
+    opacity: 0.1
+
+  .option-column
+    display: inline-block
+    height: 600px
+    width: 208px
+    vertical-align: bottom
+    &.left
+      margin-right: 30px
+    &.right
+      margin-left: 30px
+    .block
+      cursor: pointer
+      margin-top: 180px
+      margin-bottom: 50px
+      border-width: 10px
+      border-style: solid
+      height: 220px
+      font-family: 'Droid Sans Mono'
+      font-size: 40px
+      position: relative
+      .text-bottom
+        position: absolute
+        bottom: 0px
+        width: 100%
+      .text-top
+        position: absolute
+        top: 0px
+        width: 100%
+      .text-middle
+        position: absolute
+        bottom: 85px
+        width: 100%
+
+  #shape
+    .block
+      border: none
+      margin-top: 195px
+      svg
+        margin-top: 16px
+        width: 100%
+        height: 188px
+        #pp1
+          stroke-width:"0.5"
+          stroke-linejoin: round
+          fill: #444
+
+        #pp2
+          stroke-width: 6
+          stroke-linejoin: round
+          fill: rgba(0,0,0,0)
+          stroke: #444
+  #image
+    opacity: 0.3
+    img
+      width: 188px
+      height: 188px
+      margin-top: 15px
+    #upload
+      opacity: 0
