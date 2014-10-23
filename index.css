@@ -1,0 +1,59 @@
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body {
+  text-align: center;
+  margin: 0;
+  background-color: #000;
+}
+body #header {
+  height: 150px;
+  width: 100%;
+}
+body #header #menu {
+  height: 150px;
+  width: 600px;
+  background-color: rgba(0,0,0,0.5);
+  margin: 0 auto;
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+body #header #menu div {
+  border: 5px solid #fff;
+  display: inline-block;
+  margin: 10px 5px 10px 5px;
+  height: 80px;
+  width: 80px;
+  font-family: 'Droid Sans Mono';
+  cursor: pointer;
+}
+body #header #menu div img {
+  display: block;
+  width: 78px;
+  height: 78px;
+}
+body #canvas {
+  height: 600px;
+  width: 520px;
+  margin: 0 auto;
+  display: block;
+}
+body #canvas #p1 {
+  stroke-width: "0.5";
+  stroke-linejoin: round;
+}
+body #canvas #p2 {
+  stroke-width: "0.5";
+  stroke-linejoin: round;
+}
+body #buffer {
+  visibility: hidden;
+}
+#upload-image {
+  opacity: 0;
+}
