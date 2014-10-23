@@ -13,30 +13,20 @@ html
     script(src="./colpick.js")
     script(src="index.js")
   body
-    #background
     #header
-    #editor
-      #shape.option-column.left.no-select
-        .block
-          svg#shape-select(class="poly")
-            polygon#pp1(points="95,0 188,47 188,133 95,188 0,133 0,47")
-            path#pp2(d="")
-      #cp2.option-column.left
-        #p2-label.block
-          .text.text-bottom
-      svg#canvas(class="poly")
-        polygon#p1(points="")
-        polygon#p2(points="258,0 519,150 519,450 258,600 0,450 0,150")
-        image(xlink:href="anchor.png" x=60 y=100 height="400px" width="400px")
-      #cp1.option-column.right
-        #p1-label.block
-          .text.text-top
-      #image.option-column.right
-        .block
-          img(src="anchor.png")
-          input#upload(type="file")
-      #download.option-column.right
-        .block
-          .text.text-middle ↓ 
+      #menu
+        #shape-select
+          img(src="./hexagon.png")
+        #cp2.cp
+        #cp1.cp
+        #image-select
+          img(src="./anchor.png")
+        #download
+          img(src="./download.png")
+    svg#canvas(class="poly")
+      polygon#p1
+      polygon#p2
+      image(xlink:href="anchor.png" x=60 y=100 height="400px" width="400px")
 
   canvas#buffer(width="520px" height="600px")
+  input#upload-image(type="file")
