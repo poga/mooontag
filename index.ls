@@ -84,5 +84,5 @@ $ ->
 
   $ \#download .on \click ->
     svg = "<svg>#{$(\#canvas).html!}</svg>"
-    canvg document.getElementById(\buffer), svg, useCORS: true, log: true, renderCallback: !->
+    canvg document.getElementById(\buffer), svg, log: true, renderCallback: !->
       window.open document.getElementById(\buffer).toDataURL!, "title", "width=520px, height=600px"

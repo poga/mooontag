@@ -114,7 +114,6 @@
       var svg;
       svg = "<svg>" + $('#canvas').html() + "</svg>";
       return canvg(document.getElementById('buffer'), svg, {
-        useCORS: true,
         log: true,
         renderCallback: function(){
           window.open(document.getElementById('buffer').toDataURL(), "title", "width=520px, height=600px");
