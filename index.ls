@@ -10,6 +10,24 @@ $PP =
 
 $SHAPE = 0
 
+draw-canvas = (canvas) ->
+  canvas.get-context \2d
+    ..clear-rect 0, 0, 358, 416
+    ..begin-path!
+    ..move-to 179, 0
+    ..line-to 358, 105
+    ..line-to 0, 312
+    ..line-to 0, 105
+    ..fill-style = \#a84344
+    ..fill!
+    ..begin-path!
+    ..move-to 358, 105
+    ..line-to 358, 312
+    ..line-to 179, 416
+    ..line-to 0, 312
+    ..fill-style = \#ce6666
+    ..fill!
+
 render-shape = ->
   $ \#p1 .attr \points, $PP[$SHAPE].p1
   $ \#p2 .attr \points, $PP[$SHAPE].p2
@@ -46,24 +64,26 @@ handle-file = (file) ->
   else
     console.log \not-img
 
-
 $ ->
-  color-picker1 = \#cp1
-  color-picker2 = \#cp2
+  draw-canvas document.get-element-by-id \canvas
+  color-picker1 = \#left-cp
+  color-picker2 = \#right-cp
 
   $ color-picker1 .colpick do
     submit: no
+    flat: yes
     layout: \hex
     colorScheme: \dark
     onChange: (hsb, hex, rgb, el) -> fill \p1, hex
   $ color-picker2 .colpick do
     submit: no
+    flat: yes
     layout: \hex
     colorScheme: \dark
     onChange: (hsb, hex, rgb, el) -> fill \p2 hex
 
-  $ color-picker1 .colpickSetColor \fec605
-  $ color-picker2 .colpickSetColor \fea66c
+  $ color-picker1 .colpickSetColor \#a84344
+  $ color-picker2 .colpickSetColor \#ce6666
 
   render-shape!
 
