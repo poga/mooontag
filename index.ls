@@ -1,106 +1,117 @@
-$PP =
-  * p1: "258,0 519,150 519,450 0,150"
-    p2: "519,450 258,600 0,450 0,150"
-  * p1: "258,0 519,150 519,450 258,600"
-    p2: "258,0 258,600 0,450 0,150"
-  * p1: "519,150 519,450 258,600 0,450"
-    p2: "258,0 519,150 0,450 0,150"
-  * p1: ""
-    p2: "258,0 519,150 519,450 258,600 0,450 0,150"
+V = 
+  * [179, 0]
+  * [358, 105]
+  * [358, 312]
+  * [179, 416]
+  * [0, 312]
+  * [0, 105]
 
-$SHAPE = 0
+S = 0
 
-draw-canvas = (canvas) ->
-  canvas.get-context \2d
-    ..clear-rect 0, 0, 358, 416
-    ..begin-path!
-    ..move-to 179, 0
-    ..line-to 358, 105
-    ..line-to 0, 312
-    ..line-to 0, 105
-    ..fill-style = \#a84344
-    ..fill!
-    ..begin-path!
-    ..move-to 358, 105
-    ..line-to 358, 312
-    ..line-to 179, 416
-    ..line-to 0, 312
-    ..fill-style = \#ce6666
-    ..fill!
+C1 = \#a84344
+C2 = \#ce6666
 
-render-shape = ->
-  $ \#p1 .attr \points, $PP[$SHAPE].p1
-  $ \#p2 .attr \points, $PP[$SHAPE].p2
+draw-poly = (canvas, vs, color) ->
+  ctx = canvas.get-context \2d
+  ctx.fill-style = color
+  ctx.begin-path!
+  for v, i in vs
+    switch i
+    | 0         => ctx.move-to v[0], v[1]
+    | otherwise => ctx.line-to v[0], v[1]
+  ctx.fill!
+
+draw-canvas = (canvas, shape, color1, color2) ->
+  canvas.get-context \2d .clear-rect 0, 0 358, 416
+  switch shape
+  case 0
+    draw-poly canvas, [V[2], V[3], V[4], V[5]], color1
+    draw-poly canvas, [V[5], V[0], V[1], V[2]], color2
+  case 1
+    draw-poly canvas, [V[3], V[4], V[5], V[0]], color1
+    draw-poly canvas, [V[0], V[1], V[2], V[3]], color2
+  case 2
+    draw-poly canvas, [V[0], V[1], V[4], V[5]], color1
+    draw-poly canvas, [V[1], V[2], V[3], V[4]], color2
+  case 3
+    draw-poly canvas, [V[0], V[1], V[2], V[3], V[4], V[5]], color1
 
 render-bg = ->
-  c1 = tinycolor($ \#p1 .css \fill)
-  c2 = tinycolor($ \#p2 .css \fill)
+  c1 = tinycolor(C1)
+  c2 = tinycolor(C2)
   b1 = c1.getBrightness!
   b2 = c2.getBrightness!
-  if b1 > b2
+  if Math.abs(127 - b1) < 50 && Math.abs(127 - b2) < 50
+    tc = tinycolor( r: 200, g: 200, b: 200)
+  else if Math.abs(127 - b1) > 90 && Math.abs(127 - b2) > 90
+    tc = tinycolor( r: 127, g: 127, b: 127)
+  else if b1 > b2
     tc = tinycolor( r: 255-b1, g: 255-b1, b: 255-b1)
   else
     tc = tinycolor( r: 255-b2, g: 255-b2, b: 255-b2)
   $ \body .stop!
-  $ \body .animate('background-color': tc.darken!toHexString!, 500)
+  $ \body .animate('background-color': tc.lighten!toHexString!, 500)
 
-fill = (poly-id, hex) ->
-  $ "\##poly-id" .attr \fill, "##hex"
-  $ "\##poly-id" .attr \stroke, "##hex"
-  $ "\#c#{poly-id}" .css \border-color, "##hex"
-  $ "\#c#{poly-id}" .css \color, "##hex"
-  $ "\#c#{poly-id}" .css \background-color "##hex"
+change-color = (id, c) ->
+  $ "#{id}-color-label" .text c
   render-bg!
 
-handle-file = (file) ->
+handle-file = (canvas, file) ->
   if file.type.match /image.*/
-    img = $ '#image-select img' .0
-    img.file = file
     reader = new FileReader!
     reader.onload = (e) ->
-      img.src = e.target.result
-      $ '#canvas image' .attr \xlink:href, e.target.result
+      $ '#img-buffer' .attr \src, e.target.result
+      ctx = canvas.get-context \2d
+      img = document.getElementById \img-buffer
+      dx = (canvas.width - img.width) / 2
+      dy = (canvas.height - img.height) / 2
+      ctx.draw-image img, dx, dy
     reader.readAsDataURL file
   else
     console.log \not-img
 
 $ ->
-  draw-canvas document.get-element-by-id \canvas
-  color-picker1 = \#left-cp
-  color-picker2 = \#right-cp
+  canvas = document.getElementById \canvas
+  draw-canvas canvas, S, C1, C2
+  cp1 = \#left-cp
+  cp2 = \#right-cp
 
-  $ color-picker1 .colpick do
+  $ cp1 .colpick do
     submit: no
     flat: yes
     layout: \hex
     colorScheme: \dark
-    onChange: (hsb, hex, rgb, el) -> fill \p1, hex
-  $ color-picker2 .colpick do
+    onChange: (hsb, hex, rgb, el) ->
+      C1 := "##hex"
+      change-color \#left, C1
+      draw-canvas canvas, S, C1, C2
+  $ cp2 .colpick do
     submit: no
     flat: yes
     layout: \hex
     colorScheme: \dark
-    onChange: (hsb, hex, rgb, el) -> fill \p2 hex
+    onChange: (hsb, hex, rgb, el) ->
+      C2 := "##hex"
+      change-color \#right, C2
+      draw-canvas canvas, S, C1, C2
 
-  $ color-picker1 .colpickSetColor \#a84344
-  $ color-picker2 .colpickSetColor \#ce6666
-
-  render-shape!
+  $ cp1 .colpickSetColor C1
+  $ cp2 .colpickSetColor C2
 
   $ \#shape-select .on \click ->
-    $SHAPE := ($SHAPE+1) %% $PP.length
-    render-shape!
-    if $SHAPE == 3
-      $ \#cp1 .add-class \disabled
+    S := (S+1) %% 4
+    draw-canvas canvas, S, C1, C2
+    if S == 3
+      $ cp2 .add-class \disabled
     else
-      $ \#cp1 .remove-class \disabled
+      $ cp2 .remove-class \disabled
 
   $ '#image-select' .on \click -> $ \#upload-image .trigger \click
 
   $ \#upload-image .on \change ->
     file = $(\#upload-image).0.files.0
     console.log file
-    handle-file file
+    handle-file canvas, file
 
   $ \#download .on \click ->
     svg = "<svg>#{$(\#canvas).html!}</svg>"
