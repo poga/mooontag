@@ -98,6 +98,7 @@
         var img;
         $('#img-buffer').attr('src', e.target.result);
         img = document.getElementById('img-buffer');
+        drawCanvas(canvas, S, C1, C2);
         return img2canvas(img, canvas);
       };
       return reader.readAsDataURL(file);

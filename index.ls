@@ -69,6 +69,7 @@ handle-file = (canvas, file) ->
     reader.onload = (e) ->
       $ '#img-buffer' .attr \src, e.target.result
       img = document.getElementById \img-buffer
+      draw-canvas canvas, S, C1, C2
       img2canvas img, canvas
     reader.readAsDataURL file
   else
