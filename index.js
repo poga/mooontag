@@ -55,7 +55,7 @@
         g: 200,
         b: 200
       });
-    } else if (Math.abs(127 - b1) > 90 && Math.abs(127 - b2) > 90) {
+    } else if (Math.abs(127 - b1) > 90 && Math.abs(127 - b2) > 90 && (127 - b1) * (127 - b2) < 1) {
       tc = tinycolor({
         r: 127,
         g: 127,

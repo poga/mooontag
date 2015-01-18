@@ -160,6 +160,19 @@
   width: 900px;
   background-color: rgba(77,77,77,0.8);
   height: 41px;
+  text-align: center;
+}
+#footer span {
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+  font-size: 11pt;
+  color: #fff;
+  margin: 8px 10px;
+  padding-bottom: 3px;
+}
+#footer span a {
+  text-decoration: none;
+  color: #fff;
 }
 body {
   font-family: 'Raleway', sans-serif;
@@ -170,4 +183,9 @@ body {
 }
 #upload-image {
   display: none;
+}
+#copy {
+  margin-top: 10px;
+  font-size: 12pt;
+  text-align: center;
 }
