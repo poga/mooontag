@@ -1,0 +1,27 @@
+{
+  "name": "mooontag",
+  "version": "0.0.0",
+  "homepage": "https://github.com/poga/moontag",
+  "authors": [
+    "poga <poga.bahamut@gmail.com>"
+  ],
+  "description": "Mooon Hexagon Badge",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "CC0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "colpick": "~2.0.2",
+    "tinycolor": "~1.1.0",
+    "jquery-color": "~2.1.2"
+  }
+}

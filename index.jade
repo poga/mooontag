@@ -1,32 +1,43 @@
 html
   head
     meta(charset="utf-8")
-    link(href='//fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css')
-    link(rel="stylesheet" href="colpick.css")
+    link(href='//fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" href="./bower_components/colpick/css/colpick.css")
     link(rel="stylesheet" href="index.css")
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
-    script(src="//canvg.googlecode.com/svn/trunk/rgbcolor.js")
-    script(src="//canvg.googlecode.com/svn/trunk/StackBlur.js")
-    script(src="//canvg.googlecode.com/svn/trunk/canvg.js")
+    script(src="./bower_components/jquery-color/jquery.color.js")
     script(src="./bower_components/tinycolor/tinycolor.js")
-    script(src="./jquery.color-2.1.2.min.js")
-    script(src="./colpick.js")
+    script(src="./bower_components/colpick/js/colpick.js")
     script(src="index.js")
   body
-    #header
-      #menu
-        #shape-select
-          img(src="./hexagon.png")
-        #cp2.cp
-        #cp1.cp
-        #image-select
-          img(src="./anchor.png")
-        #download
-          img(src="./download.png")
-    svg#canvas(class="poly")
-      polygon#p1
-      polygon#p2
-      image(xlink:href="anchor.png" x=60 y=100 height="400px" width="400px")
-
-  canvas#buffer(width="520px" height="600px")
-  input#upload-image(type="file")
+    #main
+      #header
+        #logo
+          h1 Mooon
+          h1 Hexagon Badge
+        #line1
+        #line2
+        #menu
+          .row
+            .btn#shape-select
+              img(src="./images/rotate.png")
+            .btn#image-select
+              img(src="./images/image.png")
+            .btn#label-select
+              img(src="./images/label.png")
+            .btn#txt-select
+              img(src="./images/txt.png")
+            .btn#save-select
+              img(src="./images/save.png")
+      #editor
+        canvas#canvas(width="358px" height="416px")
+        #left-deco
+        #left-color-label.clabel #a84344
+        #left-cp
+        #right-deco
+        #right-cp
+        #right-color-label.clabel #ce6666
+      #footer
+    input#upload-image(type="file")
+    img#img-buffer
+    a#temp-link(style="display: none") aBAC

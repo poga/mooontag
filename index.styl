@@ -1,58 +1,154 @@
-.no-select
-  -webkit-touch-callout: none
-  -webkit-user-select: none
-  -khtml-user-select: none
-  -moz-user-select: none
-  -ms-user-select: none
-  user-select: none
+c = rgba(77, 77, 77, 0.8)
+
+#header
+  width: 890px
+  height: 54px
+  margin: 0 auto
+  margin-top: 54px
+  position: relative
+
+#logo
+  position: absolute
+  top: -15px
+  width: 410px
+  height: 110px
+  float: left
+  border-bottom: 3px solid c
+  h1
+    color: c
+    margin: 0
+    line-height: 38pt
+    font-size: 32pt
+    font-weight: 400
+
+#line1
+  position: absolute
+  left: 165px
+  width: 103px
+  height: 10px
+  background-color: c
+
+#line2
+  position: absolute
+  left: 295px
+  width: 113px
+  height: 3px
+  background-color: c
+
+#menu
+  border-top: 3px solid c
+  width: 455px
+  float: right
+  .row
+    margin-top: 10px
+    background-color: c
+    width: 455px
+    height: 60px
+    position: relative
+    .btn
+      position: absolute
+      display: inline-block
+      cursor: pointer
+      text-align: center
+    #shape-select
+      top: 12px
+      left: 10px
+      &:active
+        top: 13px
+    #image-select
+      top: 10px
+      left: 120px
+      &:active
+        top: 11px
+    #label-select
+      top: 10px
+      left: 210px
+      &:active
+        top: 11px
+    #txt-select
+      top: 12px
+      left: 300px
+      &:active
+        top: 13px
+    #save-select
+      top: 10px
+      left: 375px
+      &:active
+        top: 11px
+
+
+#main
+  width: 1024px
+  margin: 0 auto
+
+#editor
+  height: 416px
+  width: 900px
+  margin: 0 auto
+  margin-top: 97px
+  padding-bottom: 65px
+  border-bottom: 5px solid c
+  position: relative
+  .clabel
+    font-size: 22px
+    font-weight: 300
+  #canvas
+    position: absolute
+    top: 0
+    left: 271px
+  #left-deco
+    border-top: 2px solid #a84344
+    border-right: 20px solid #a84344
+    width: 230px
+    height: 135px
+    position: absolute
+    top: 105px
+    left: 11px
+  #left-color-label
+    position: absolute
+    top: 112px
+    left: 11px
+    color: #a84344
+  #left-cp
+    position: absolute
+    top: 148px
+    left: 9px
+    height: 169px
+    overflow: hidden
+  #right-deco
+    border-bottom: 2px solid #ce6666
+    border-left: 20px solid #ce6666
+    width: 230px
+    height: 135px
+    position: absolute
+    top: 175px
+    left: 639px
+  #right-cp
+    position: absolute
+    top: 100px
+    left: 683px
+    height: 169px
+    overflow: hidden
+  #right-color-label
+    position: absolute
+    top: 280px
+    left: 798px
+    color: #ce6666
+
+#footer
+  position: relative
+  margin-top: 10px
+  margin-left: 62px
+  width: 900px
+  background-color: c
+  height: 41px
 
 body
-  text-align: center
+  font-family: 'Raleway', sans-serif
   margin: 0
-  background-color: black
 
-  #header
-    height: 150px
-    width: 100%
-
-    #menu
-      height: 150px
-      width: 600px
-      background-color: rgba(0,0,0,0.5)
-      margin: 0 auto
-      border-bottom-right-radius:1em;
-      border-bottom-left-radius:1em;
-
-      div
-        border: 5px solid white
-        display: inline-block
-        margin: 10px 5px 10px 5px
-        height: 80px
-        width: 80px
-        font-family: 'Droid Sans Mono'
-        cursor: pointer
-
-        img
-          display: block
-          width: 78px
-          height: 78px
-
-  #canvas
-    height: 600px
-    width: 520px
-    margin: 0 auto
-    display: block
-
-    #p1
-      stroke-width:"0.5"
-      stroke-linejoin: round
-
-    #p2
-      stroke-width:"0.5"
-      stroke-linejoin: round
-
-  #buffer
-    visibility: hidden
+#img-buffer
+  display: none
 
 #upload-image
-  opacity: 0
+  display: none
