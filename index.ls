@@ -1,4 +1,4 @@
-V = 
+V =
   * [179, 0]
   * [358, 105]
   * [358, 312]
@@ -35,6 +35,7 @@ draw-canvas = (canvas, shape, color1, color2) ->
     draw-poly canvas, [V[1], V[2], V[3], V[4]], color2
   case 3
     draw-poly canvas, [V[0], V[1], V[2], V[3], V[4], V[5]], color1
+  img2canvas document.getElementById(\img-buffer), canvas
 
 render-bg = ->
   c1 = tinycolor(C1)
@@ -56,16 +57,19 @@ change-color = (id, c) ->
   $ "#{id}-color-label" .text c
   render-bg!
 
+img2canvas = (img, canvas) ->
+  ctx = canvas.get-context \2d
+  dx = (canvas.width - img.width) / 2
+  dy = (canvas.height - img.height) / 2
+  ctx.draw-image img, dx, dy
+
 handle-file = (canvas, file) ->
   if file.type.match /image.*/
     reader = new FileReader!
     reader.onload = (e) ->
       $ '#img-buffer' .attr \src, e.target.result
-      ctx = canvas.get-context \2d
       img = document.getElementById \img-buffer
-      dx = (canvas.width - img.width) / 2
-      dy = (canvas.height - img.height) / 2
-      ctx.draw-image img, dx, dy
+      img2canvas img, canvas
     reader.readAsDataURL file
   else
     console.log \not-img
@@ -110,10 +114,11 @@ $ ->
 
   $ \#upload-image .on \change ->
     file = $(\#upload-image).0.files.0
-    console.log file
     handle-file canvas, file
 
-  $ \#download .on \click ->
-    svg = "<svg>#{$(\#canvas).html!}</svg>"
-    canvg document.getElementById(\buffer), svg, log: true, renderCallback: !->
-      window.open document.getElementById(\buffer).toDataURL!, "title", "width=520px, height=600px"
+  $ \#save-select .on \click ->
+    #window.open document.getElementById(\canvas).toDataURL!, "title", "width=520px, height=600px"
+    $ \#temp-link
+      ..attr \href, "data:application#{canvas.toDataURL!}"
+      ..attr \download, "badge.png"
+    $ \#temp-link .0.click!
