@@ -54,7 +54,10 @@ render-bg = ->
   $ \body .animate('background-color': tc.lighten!toHexString!, 500)
 
 change-color = (id, c) ->
-  $ "#{id}-color-label" .text c
+  $ "#{id}-color-label" 
+    ..text c
+    ..css \color c
+  $ "#{id}-deco" .css \border-color c
   render-bg!
 
 img2canvas = (img, canvas) ->

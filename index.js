@@ -80,7 +80,11 @@
     }, 500);
   };
   changeColor = function(id, c){
-    $(id + "-color-label").text(c);
+    var x$;
+    x$ = $(id + "-color-label");
+    x$.text(c);
+    x$.css('color', c);
+    $(id + "-deco").css('border-color', c);
     return renderBg();
   };
   img2canvas = function(img, canvas){
