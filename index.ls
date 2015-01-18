@@ -44,7 +44,7 @@ render-bg = ->
   b2 = c2.getBrightness!
   if Math.abs(127 - b1) < 50 && Math.abs(127 - b2) < 50
     tc = tinycolor( r: 200, g: 200, b: 200)
-  else if Math.abs(127 - b1) > 90 && Math.abs(127 - b2) > 90
+  else if Math.abs(127 - b1) > 90 && Math.abs(127 - b2) > 90 && (127-b1) * (127-b2) < 1
     tc = tinycolor( r: 127, g: 127, b: 127)
   else if b1 > b2
     tc = tinycolor( r: 255-b1, g: 255-b1, b: 255-b1)
