@@ -99,7 +99,7 @@ $ ->
   $ cp2 .colpickSetColor C2
 
   $ \#shape-select .on \click ->
-    S := (S+1) %% 4
+    S := (S+1) % 4
     draw-canvas canvas, S, C1, C2
     if S == 3
       $ cp2 .add-class \disabled

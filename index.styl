@@ -42,10 +42,40 @@ c = rgba(77, 77, 77, 0.8)
   .row
     margin-top: 10px
     background-color: c
+    width: 455px
+    height: 60px
+    position: relative
     .btn
-      margin: 13px 10px
+      position: absolute
       display: inline-block
+      cursor: pointer
       text-align: center
+    #shape-select
+      top: 12px
+      left: 10px
+      &:active
+        top: 13px
+    #image-select
+      top: 10px
+      left: 120px
+      &:active
+        top: 11px
+    #label-select
+      top: 10px
+      left: 210px
+      &:active
+        top: 11px
+    #txt-select
+      top: 12px
+      left: 300px
+      &:active
+        top: 13px
+    #save-select
+      top: 10px
+      left: 375px
+      &:active
+        top: 11px
+
 
 #main
   width: 1024px
