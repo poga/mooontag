@@ -1,59 +1,173 @@
-.no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+#header {
+  width: 890px;
+  height: 54px;
+  margin: 0 auto;
+  margin-top: 54px;
+  position: relative;
+}
+#logo {
+  position: absolute;
+  top: -15px;
+  width: 410px;
+  height: 110px;
+  float: left;
+  border-bottom: 3px solid rgba(77,77,77,0.8);
+}
+#logo h1 {
+  color: rgba(77,77,77,0.8);
+  margin: 0;
+  line-height: 38pt;
+  font-size: 32pt;
+  font-weight: 400;
+}
+#line1 {
+  position: absolute;
+  left: 165px;
+  width: 103px;
+  height: 10px;
+  background-color: rgba(77,77,77,0.8);
+}
+#line2 {
+  position: absolute;
+  left: 295px;
+  width: 113px;
+  height: 3px;
+  background-color: rgba(77,77,77,0.8);
+}
+#menu {
+  border-top: 3px solid rgba(77,77,77,0.8);
+  width: 455px;
+  float: right;
+}
+#menu .row {
+  margin-top: 10px;
+  background-color: rgba(77,77,77,0.8);
+  width: 455px;
+  height: 60px;
+  position: relative;
+}
+#menu .row .btn {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+#menu .row #shape-select {
+  top: 12px;
+  left: 10px;
+}
+#menu .row #shape-select:active {
+  top: 13px;
+}
+#menu .row #image-select {
+  top: 10px;
+  left: 120px;
+}
+#menu .row #image-select:active {
+  top: 11px;
+}
+#menu .row #label-select {
+  top: 10px;
+  left: 210px;
+}
+#menu .row #label-select:active {
+  top: 11px;
+}
+#menu .row #txt-select {
+  top: 12px;
+  left: 300px;
+}
+#menu .row #txt-select:active {
+  top: 13px;
+}
+#menu .row #save-select {
+  top: 10px;
+  left: 375px;
+}
+#menu .row #save-select:active {
+  top: 11px;
+}
+#main {
+  width: 1024px;
+  margin: 0 auto;
+}
+#editor {
+  height: 416px;
+  width: 900px;
+  margin: 0 auto;
+  margin-top: 97px;
+  padding-bottom: 65px;
+  border-bottom: 5px solid rgba(77,77,77,0.8);
+  position: relative;
+}
+#editor .clabel {
+  font-size: 22px;
+  font-weight: 300;
+}
+#editor #canvas {
+  position: absolute;
+  top: 0;
+  left: 271px;
+}
+#editor #left-deco {
+  border-top: 2px solid #a84344;
+  border-right: 20px solid #a84344;
+  width: 230px;
+  height: 135px;
+  position: absolute;
+  top: 105px;
+  left: 11px;
+}
+#editor #left-color-label {
+  position: absolute;
+  top: 112px;
+  left: 11px;
+  color: #a84344;
+}
+#editor #left-cp {
+  position: absolute;
+  top: 148px;
+  left: 9px;
+  height: 169px;
+  overflow: hidden;
+}
+#editor #right-deco {
+  border-bottom: 2px solid #ce6666;
+  border-left: 20px solid #ce6666;
+  width: 230px;
+  height: 135px;
+  position: absolute;
+  top: 175px;
+  left: 639px;
+}
+#editor #right-cp {
+  position: absolute;
+  top: 100px;
+  left: 683px;
+  height: 169px;
+  overflow: hidden;
+}
+#editor #right-color-label {
+  position: absolute;
+  top: 280px;
+  left: 798px;
+  color: #ce6666;
+}
+#footer {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 62px;
+  width: 900px;
+  background-color: rgba(77,77,77,0.8);
+  height: 41px;
 }
 body {
-  text-align: center;
+  font-family: 'Raleway', sans-serif;
   margin: 0;
-  background-color: #000;
 }
-body #header {
-  height: 150px;
-  width: 100%;
-}
-body #header #menu {
-  height: 150px;
-  width: 600px;
-  background-color: rgba(0,0,0,0.5);
-  margin: 0 auto;
-  border-bottom-right-radius: 1em;
-  border-bottom-left-radius: 1em;
-}
-body #header #menu div {
-  border: 5px solid #fff;
-  display: inline-block;
-  margin: 10px 5px 10px 5px;
-  height: 80px;
-  width: 80px;
-  font-family: 'Droid Sans Mono';
-  cursor: pointer;
-}
-body #header #menu div img {
-  display: block;
-  width: 78px;
-  height: 78px;
-}
-body #canvas {
-  height: 600px;
-  width: 520px;
-  margin: 0 auto;
-  display: block;
-}
-body #canvas #p1 {
-  stroke-width: "0.5";
-  stroke-linejoin: round;
-}
-body #canvas #p2 {
-  stroke-width: "0.5";
-  stroke-linejoin: round;
-}
-body #buffer {
-  visibility: hidden;
+#img-buffer {
+  display: none;
 }
 #upload-image {
-  opacity: 0;
+  display: none;
 }
