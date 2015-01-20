@@ -78,51 +78,50 @@ handle-file = (canvas, file) ->
   else
     console.log \not-img
 
-$ ->
-  canvas = document.getElementById \canvas
-  draw-canvas canvas, S, C1, C2
-  cp1 = \#left-cp
-  cp2 = \#right-cp
+canvas = document.getElementById \canvas
+draw-canvas canvas, S, C1, C2
+cp1 = \#left-cp
+cp2 = \#right-cp
 
-  $ cp1 .colpick do
-    submit: no
-    flat: yes
-    layout: \hex
-    colorScheme: \dark
-    onChange: (hsb, hex, rgb, el) ->
-      C1 := "##hex"
-      change-color \#left, C1
-      draw-canvas canvas, S, C1, C2
-  $ cp2 .colpick do
-    submit: no
-    flat: yes
-    layout: \hex
-    colorScheme: \dark
-    onChange: (hsb, hex, rgb, el) ->
-      C2 := "##hex"
-      change-color \#right, C2
-      draw-canvas canvas, S, C1, C2
-
-  $ cp1 .colpickSetColor C1
-  $ cp2 .colpickSetColor C2
-
-  $ \#shape-select .on \click ->
-    S := (S+1) % 4
+$ cp1 .colpick do
+  submit: no
+  flat: yes
+  layout: \hex
+  colorScheme: \dark
+  onChange: (hsb, hex, rgb, el) ->
+    C1 := "##hex"
+    change-color \#left, C1
     draw-canvas canvas, S, C1, C2
-    if S == 3
-      $ cp2 .add-class \disabled
-    else
-      $ cp2 .remove-class \disabled
+$ cp2 .colpick do
+  submit: no
+  flat: yes
+  layout: \hex
+  colorScheme: \dark
+  onChange: (hsb, hex, rgb, el) ->
+    C2 := "##hex"
+    change-color \#right, C2
+    draw-canvas canvas, S, C1, C2
 
-  $ '#image-select' .on \click -> $ \#upload-image .trigger \click
+$ cp1 .colpickSetColor C1
+$ cp2 .colpickSetColor C2
 
-  $ \#upload-image .on \change ->
-    file = $(\#upload-image).0.files.0
-    handle-file canvas, file
+$ \#shape-select .on \click ->
+  S := (S+1) % 4
+  draw-canvas canvas, S, C1, C2
+  if S == 3
+    $ cp2 .add-class \disabled
+  else
+    $ cp2 .remove-class \disabled
 
-  $ \#save-select .on \click ->
-    #window.open document.getElementById(\canvas).toDataURL!, "title", "width=520px, height=600px"
-    $ \#temp-link
-      ..attr \href, "data:application#{canvas.toDataURL!}"
-      ..attr \download, "badge.png"
-    $ \#temp-link .0.click!
+$ '#image-select' .on \click -> $ \#upload-image .trigger \click
+
+$ \#upload-image .on \change ->
+  file = $(\#upload-image).0.files.0
+  handle-file canvas, file
+
+$ \#save-select .on \click ->
+  #window.open document.getElementById(\canvas).toDataURL!, "title", "width=520px, height=600px"
+  $ \#temp-link
+    ..attr \href, "data:application#{canvas.toDataURL!}"
+    ..attr \download, "badge.png"
+  $ \#temp-link .0.click!
